@@ -1,0 +1,46 @@
+<h2 class="title is-3">Register</h2>
+<form [formGroup]="registerForm">
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+            <input class="input" [ngClass]="{ 'is-danger': submitted && registerForm.controls.name.errors }" type="text"
+                placeholder="Text input" formControlName="name">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <input class="input" type="email"
+                [ngClass]="{ 'is-danger': submitted && registerForm.controls.email.errors }" placeholder="Text input"
+                formControlName="email">
+        </div>
+        <p *ngIf="registerForm.controls.email.errors && registerForm.controls.email.errors.email" class="help is-danger">This email is invalid</p>
+    </div>
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <input class="input" [ngClass]="{ 'is-danger': submitted && registerForm.controls.password.errors }"
+                type="password" formControlName="password" placeholder="Text input">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Confirm Password</label>
+        <div class="control">
+            <input class="input" type="password"
+                [ngClass]="{ 'is-danger': submitted && registerForm.controls.passwordCheck.errors }"
+                formControlName="passwordCheck" placeholder="Text input">
+        </div>
+        <p *ngIf="registerForm.value.password != registerForm.value.passwordCheck" class="help is-danger">Passwords
+            don't match</p>
+    </div>
+
+    <div *ngIf="error" class="notification is-danger">
+        {{error}}
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button (click)="onSubmitRegisterForm()" class="button is-primary">Submit</button>
+        </div>
+    </div>
+</form>

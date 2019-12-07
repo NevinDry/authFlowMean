@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="title is-2">Coucou {{usersService.User ? usersService.User.name : 'Visitor' }}</h1>
+    <div *ngIf="!usersService.User">
+        <div class="columns">
+            <div class="column">
+                <app-login></app-login>
+            </div>
+
+            <div class="column">
+                <app-register></app-register>
+            </div>
+        </div>
+    </div>
+</div>
